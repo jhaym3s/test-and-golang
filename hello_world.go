@@ -29,7 +29,9 @@ func greetings(name, language string) string {
 	}
 	return getGreetingPrefix(language) + name
 }
+
+
 func main() {
-	fmt.Println(greetings("Jhaymes", "Spanish"));
+	fmt.Println(greetings("Jhaymes", "Spanish"));	
 	
 }
