@@ -6,12 +6,29 @@ import (
 )
 
 func TestHelloWorld(t *testing.T) {
-	got := greetings("Jhaymes")
-	want := "Hello Jhaymes"
+	// got := greetings("Jhaymes")
+	// want := "Hello Jhaymes"
 
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	} 
+	// if got != want {
+	// 	t.Errorf("got %q want %q", got, want)
+	// } 
+	t.Run("say hello with name", func(t *testing.T) {
+		got := greetings("Jhaymes")
+		want := "Hello Jhaymes"
+
+		if got != want {
+			t.Errorf("got %q but wanted %q ", got, want)
+		}
+	})
+
+	t.Run("say hello world when there is no name", func(t *testing.T) {
+		got := greetings("")
+		want := "Hello world"
+
+		if got != want {
+			t.Errorf("got %q but wanted %q ", got, want)
+		}
+	})
 
 }
 

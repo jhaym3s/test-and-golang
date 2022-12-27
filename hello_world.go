@@ -2,11 +2,13 @@ package main
 
 import "fmt"
 
+const englishHelloPrefix = "Hello "
+
 func greetings(name string) string {
 	if name == "" {
 		return "Hello world"
 	}
-	return "Hello " + name
+	return englishHelloPrefix + name
 }
 func main() {
 	fmt.Println(greetings("Jhaymes"))
