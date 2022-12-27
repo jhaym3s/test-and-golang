@@ -1,12 +1,12 @@
 package numbers
 
 import (
-	"fmt"
+	//"fmt"
 	"testing"
 )
 
 func Test(t *testing.T) {
-	t.Run("first", func(t *testing.T) {
+	t.Run("adder function", func(t *testing.T) {
 		got := Adder(3, 4)
 		want := 7
 
@@ -16,7 +16,3 @@ func Test(t *testing.T) {
 	})
 }
 
-func ExampleAdder()  {
-	sum := Adder(1, 5)
-	fmt.Println(sum)
-}
