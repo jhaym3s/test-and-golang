@@ -7,3 +7,5 @@ https://quii.gitbook.io/learn-go-with-tests/
 https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully
 
 <p>///comparison  https://go.dev/ref/spec#Comparison_operators</p>
+
+<p>https://dave.cheney.net/</p>  
