@@ -39,6 +39,11 @@ func (s *SpyCountdownOperations) Write(p []byte) (n int, err error) {
 	return 
 }
 
+// type ConfigurableSleeper struct {
+// 	duration time.Duration
+// 	sleep    func(time.Duration)
+// }
+
 
 
 
