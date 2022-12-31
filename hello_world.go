@@ -1,7 +1,11 @@
 package main
 
-
-import "fmt"
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+)
 
 const englishHelloPrefix = "Hello "
 const spanishHelloPrefix = "Hola "
@@ -31,7 +35,18 @@ func greetings(name, language string) string {
 }
 
 
+func Greet(writer io.Writer, name string) {
+	fmt.Fprintf(writer, "Hello, %s", name)
+}
+
+func MyGreeterHandler(w http.ResponseWriter, r *http.Request) {
+	Greet(w, "James")
+}
+
+///Run the program and go to http://localhost:5001. You'll see your greeting function being used.
+
+
 func main() {
 	fmt.Println(greetings("Jhaymes", "Spanish"));	
-	
+	log.Fatal(http.ListenAndServe(":5001", http.HandlerFunc(MyGreeterHandler)))
 }
