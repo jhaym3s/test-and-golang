@@ -1,8 +1,8 @@
 package main
 
 import (
-	
 	"testing"
+	"time"
 )
 
 func TestHelloWorld(t *testing.T) {
@@ -49,3 +49,19 @@ func assertCorrectAnswers(t testing.TB, got, want string)  {
 /// The test function must start with the word Test
 /// The test function takes one argument only t *testing.T
 /// In order to use the *testing.T type, you need to import "testing", like we did with fmt in the other file
+
+func slowStubWebsiteChecker(_ string) bool {
+	time.Sleep(20 * time.Millisecond)
+	return true
+}
+
+func BenchmarkCheckWebsites(b *testing.B) {
+	urls := make([]string, 100)
+	for i := 0; i < len(urls); i++ {
+		urls[i] = "a url"
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		CheckWebsites(slowStubWebsiteChecker, urls)
+	}
+}
