@@ -38,3 +38,34 @@ func measureResponseTime(url string) time.Duration {
 	http.Get(url)
 	return time.Since(start)
 }
+
+///
+
+func RacerWithSelect(a, b string) (winner string) {
+	select {
+	case <-ping(a):
+		return a
+	case <-ping(b):
+		return b
+	}
+}
+
+func ping(url string) chan struct{} {
+	//!Why struct{} and not another type like a bool? Well, a 
+	//!"chan struct{}" is the smallest data type available from a 
+	//!memory perspective so we get no allocation versus a bool.
+	ch := make(chan struct{})
+	go func() {
+		http.Get(url)
+		close(ch)
+	}()
+	return ch
+}
+
+//!What select lets you do is wait on multiple channels. 
+//!The first one to send a value "wins" and the code underneath the case is executed.
+
+
+///Notice how we have to use make when creating a channel; 
+//rather than say var ch chan struct{}. When you use var the variable will be 
+//initialised with the "zero" value of the type. So for string it is "", int it is 0, etc.
