@@ -12,3 +12,5 @@ https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully
 
 <p>https://go.dev/blog/race-detector</p>  golang race detector
 
+<p> https://go.dev/play/</p> golang playground
+
