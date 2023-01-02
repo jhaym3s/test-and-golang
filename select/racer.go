@@ -1,52 +1,54 @@
 package racer
 
 import (
+	"fmt"
 	"net/http"
 	"time"
 )
 
+// func Racer(a, b string) string {
+// 	startA := time.Now()
+// 	http.Get(a)
+// 	aDuration := time.Since(startA)
+// 	startB := time.Now()
+// 	http.Get(b)
+// 	bDuration := time.Since(startB)
 
-func Racer(a, b string) string {
-	startA := time.Now()
-	http.Get(a)
-	aDuration := time.Since(startA)
-	startB := time.Now()
-	http.Get(b)
-	bDuration := time.Since(startB)
+// 	if aDuration < bDuration {
+// 		return a
+// 	}
 
-	if aDuration < bDuration {
-		return a
-	}
+// 	return b
 
-	return b
-	
-}
+// }
 
-func Racer1(a, b string) (winner string) {
-	aDuration := measureResponseTime(a)
-	bDuration := measureResponseTime(b)
+// func Racer1(a, b string) (winner string) {
+// 	aDuration := measureResponseTime(a)
+// 	bDuration := measureResponseTime(b)
 
-	if aDuration < bDuration {
-		return a
-	}
+// 	if aDuration < bDuration {
+// 		return a
+// 	}
 
-	return b
-}
+// 	return b
+// }
 
-func measureResponseTime(url string) time.Duration {
-	start := time.Now()
-	http.Get(url)
-	return time.Since(start)
-}
+// func measureResponseTime(url string) time.Duration {
+// 	start := time.Now()
+// 	http.Get(url)
+// 	return time.Since(start)
+// }
 
 ///
 
-func RacerWithSelect(a, b string) (winner string) {
+func Racer(a, b string, timeout time.Duration) (winner string, error error) {
 	select {
 	case <-ping(a):
-		return a
+		return a, nil
 	case <-ping(b):
-		return b
+		return b, nil
+	case <-time.After(timeout):
+		return "", fmt.Errorf("timed out waiting for %s and %s", a, b)
 	}
 }
 
