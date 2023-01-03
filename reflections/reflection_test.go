@@ -14,13 +14,14 @@ func TestWalk(t *testing.T) {
 		ExpectedCalls []string
 	}{
 		{
-			"struct with two string fields",
-			struct {
-				Name string
-				City string
-			}{"Chris", "London"},
+			"nested fields",
+			Person{
+				"Chris",
+				Profile{33, "London"},
+			},
 			[]string{"Chris", "London"},
-		}}
+		},
+	}
 
 	for _, test := range cases {
 		t.Run(test.Name, func(t *testing.T) {
