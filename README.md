@@ -14,3 +14,6 @@ https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully
 
 <p> https://go.dev/play/</p> golang playground
 
+I will have to stop for now and test my test knowledge on less complex things before coming back to "context"
+
+
