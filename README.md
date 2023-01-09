@@ -1,5 +1,7 @@
 # test-and-golang
 
+you will need to run "go mod init SOMENAME" in each new folder before running commands like "go test" or "go build".
+
 
 https://quii.gitbook.io/learn-go-with-tests/
 
